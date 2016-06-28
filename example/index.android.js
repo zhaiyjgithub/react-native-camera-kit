@@ -1,30 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity,
+  Image
 } from 'react-native';
 
+import CameraScreen from  './CameraScreen';
+
 class example extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      example: undefined
+    };
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
+        <TouchableOpacity onPress={() => this.setState({example: CameraScreen})}>
+          <Text style={styles.buttonText}>
+            Camera Screen
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -37,16 +39,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  buttonText: {
+    color: 'blue',
+    marginBottom: 20,
+    fontSize: 20
+
+  }
 });
 
 AppRegistry.registerComponent('example', () => example);
