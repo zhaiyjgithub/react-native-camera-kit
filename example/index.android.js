@@ -20,6 +20,10 @@ class example extends Component {
   }
 
   render() {
+    if (this.state.example) {
+      const Example = this.state.example;
+      return <Example />;
+    }
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.setState({example: CameraScreen})}>
