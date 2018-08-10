@@ -15,8 +15,8 @@ public class BarcodeFrame extends View {
 
     private static final int STROKE_WIDTH = 5;
     private static final int ANIMATION_SPEED = 8;
-    private static final int WIDTH_SCALE = 7;
-    private static final double HEIGHT_SCALE = 2.75;
+    private static final int WIDTH_SCALE = 8;
+    private static final double HEIGHT_SCALE = 3.75;
 
     private Paint dimPaint;
     private Paint framePaint;
