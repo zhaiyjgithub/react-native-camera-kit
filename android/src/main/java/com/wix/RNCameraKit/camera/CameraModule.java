@@ -82,6 +82,16 @@ public class CameraModule extends ReactContextBaseJavaModule {
         }
         promise.resolve(false);
     }
+    
+     @ReactMethod
+    public void setCameraFlashMode(boolean isTouch){
+        if (isTouch) {
+            CameraViewManager.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+        }else {
+            CameraViewManager.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+        }
+
+    }
 
     @ReactMethod
     public void hasFlashForCurrentCamera(Promise promise) {
