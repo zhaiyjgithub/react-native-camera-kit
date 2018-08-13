@@ -95,6 +95,11 @@ RCT_EXPORT_METHOD(setFlashMode:(CKCameraFlashMode)flashMode
     }];
 }
 
-
+RCT_EXPORT_METHOD(setFlashMode:(AVCaptureFlashMode)flashMode) {
+    
+    [self.camera setFlashMode:flashMode callback:^(BOOL success) {
+        
+    }];
+}
 
 @end
