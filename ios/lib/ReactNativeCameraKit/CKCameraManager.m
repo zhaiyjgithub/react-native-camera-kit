@@ -95,11 +95,26 @@ RCT_EXPORT_METHOD(setFlashMode:(CKCameraFlashMode)flashMode
     }];
 }
 
-RCT_EXPORT_METHOD(setFlashMode:(AVCaptureFlashMode)flashMode) {
-    
-    [self.camera setFlashMode:flashMode callback:^(BOOL success) {
+RCT_EXPORT_METHOD(setFlashMode:(BOOL)on) {
+    if (on) {
+        AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        NSError *error = nil;
         
-    }];
+        if ([captureDevice hasTorch]) {
+            BOOL locked = [captureDevice lockForConfiguration:&error];
+            if (locked) {
+                captureDevice.torchMode = AVCaptureTorchModeOn;
+                [captureDevice unlockForConfiguration];
+            }
+        }
+    }else {
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        if ([device hasTorch]) {
+            [device lockForConfiguration:nil];
+            [device setTorchMode: AVCaptureTorchModeOff];
+            [device unlockForConfiguration];
+        }
+    }
 }
 
 @end
